@@ -11,10 +11,16 @@ const io = require("socket.io")(http, {
 });
 
 io.on('connection', (socket)=> {
-      console.log('User Online');
+      
 
       socket.on('canvas-data', (data)=> {
             socket.broadcast.emit('canvas-data', data);
+            console.log('data');
+            
+      })
+       socket.on('clear', (data)=> {
+            socket.broadcast.emit('clear', data);
+            console.log('called')
             
       })
 })
